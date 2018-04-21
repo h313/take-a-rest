@@ -1,0 +1,27 @@
+{
+  "name": "take-a-rest",
+  "version": "0.0.1",
+  "description": "a web push api used to remind you to take a rest every so often",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h313/take-a-rest.git"
+  },
+  "keywords": [
+    "rest",
+    "koa",
+    "push"
+  ],
+  "author": "Haoda Wang",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/h313/take-a-rest/issues"
+  },
+  "homepage": "https://github.com/h313/take-a-rest#readme",
+  "dependencies": {
+    "koa": "^2.5.0"
+  }
+}
