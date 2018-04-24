@@ -13,9 +13,9 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 setInterval(function() {
-    const keys = await redis.keys();
+    const keys = redis.keys();
     keys.forEach(function(element) {
-        const time = await redis.get(element);
+        const time = redis.get(element);
         if(moment.duration(now.diff(time)).asHours() >= 2) {
             notify(element);
         }
