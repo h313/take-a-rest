@@ -9,4 +9,8 @@ router.post('/register', async (ctx) => {
     ctx.body = JSON.stringify({success: 1});
 });
 
+router.get('/vapidPublicKey', async (ctx) => {
+    ctx.body = process.env.VAPID_PUBLIC_KEY;
+});
+
 module.exports = router;
