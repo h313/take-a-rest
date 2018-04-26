@@ -15,13 +15,14 @@ app.use(router.allowedMethods());
 app.use(serve(require('path').join('static')));
 
 setInterval(function() {
-    const keys = redis.keys();
-    keys.forEach(function(element) {
-        const time = redis.get(element);
+    const keys = redis.keys('*');
+    for (i = 0; i < keys.length; i++) {
+        const time = redis.get(JSON.stringify(keys[i]));
         if (moment.duration(now.diff(time)).asHours() >= 2) {
-            notify(element);
+            redis.set(JSON.stringify(keys[i]), moment());
+            notify(keys[i]);
         }
-    });
-}, 300000);
+    }
+}, 60000);
 
 app.listen(3000);

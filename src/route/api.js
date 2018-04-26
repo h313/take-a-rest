@@ -1,11 +1,18 @@
 const Router = require('koa-router');
 const redis = require('../db/redis');
 const moment = require('moment');
+const notify = require('../notification');
 
 const router = new Router();
 
 router.post('/register', async (ctx) => {
-    await redis.set(req.body.subscription, moment());
+    console.log(ctx.request.body);
+    await redis.set(JSON.stringify(ctx.request.body['subscription']), moment());
+    ctx.body = JSON.stringify({success: 1});
+});
+
+router.post('/testNotify', async (ctx) => {
+    notify(ctx.request.body['subscription']);
     ctx.body = JSON.stringify({success: 1});
 });
 
