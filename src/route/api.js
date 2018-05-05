@@ -7,7 +7,7 @@ const router = new Router();
 
 router.post('/register', async (ctx) => {
     console.log(ctx.request.body);
-    await redis.set(JSON.stringify(ctx.request.body['subscription']), moment());
+    await redis.set(JSON.stringify(ctx.request.body['subscription']), moment().unix());
     ctx.body = JSON.stringify({success: 1});
 });
 
